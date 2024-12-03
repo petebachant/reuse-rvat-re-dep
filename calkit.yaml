@@ -1,7 +1,7 @@
 questions:
   - Can we come up with a reasonable way to reuse this code and data?
 datasets:
-  - path: data/rvat-re-dep
+  - path: data/rvat-re-dep/processed
     title: UNH-RVAT Reynolds number dependence experimental data
     description: >
       Processed/reduced data from the UNH-RVAT Reynolds number dependence
@@ -10,6 +10,15 @@ datasets:
       project: unh-core/rvat-re-dep
       git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
       path: Data/Processed
+  - path: data/rvat-re-dep/config
+    title: UNH-RVAT Reynolds number dependence experimental config
+    description: >
+      Config and test plan from the UNH-RVAT Reynolds number dependence
+      experiment.
+    imported_from:
+      project: unh-core/rvat-re-dep
+      git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
+      path: Config
 environments:
   reuse-rvat-re-dep:
     path: environment.yml
