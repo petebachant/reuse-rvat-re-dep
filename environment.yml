@@ -5,3 +5,11 @@ dependencies:
   - matplotlib
   - pandas
   - jupyter
+  - numpy
+  - python=3.12.7
+  - pip
+  - seaborn
+  - h5py
+  - pip:
+      - pxl
+      - progressbar
