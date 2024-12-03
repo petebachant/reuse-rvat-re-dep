@@ -2,9 +2,21 @@ stages:
   check-conda-env:
     cmd: calkit check-conda-env -f environment.yml
     deps:
-    - environment.yml
+      - environment.yml
     outs:
-    - environment-lock.yml:
-        cache: false
-        persist: true
+      - environment-lock.yml:
+          cache: false
+          persist: true
     always_changed: true
+  plot-mean-cont-quiv:
+    cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
+    deps:
+      - plot.py
+      - pyrvatrd/processing.py
+      - pyrvatrd/plotting.py
+    outs:
+      - figures/meancontquiv_04.pdf
+      - figures/meancontquiv_06.pdf
+      - figures/meancontquiv_08.pdf
+      - figures/meancontquiv_10.pdf
+      - figures/meancontquiv_12.pdf
