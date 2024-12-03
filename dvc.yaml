@@ -1,0 +1,10 @@
+stages:
+  check-conda-env:
+    cmd: calkit check-conda-env -f environment.yml
+    deps:
+    - environment.yml
+    outs:
+    - environment-lock.yml:
+        cache: false
+        persist: true
+    always_changed: true

@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  check-conda-env:
+    cmd: calkit check-conda-env -f environment.yml
+    deps:
+    - path: environment.yml
+      hash: md5
+      md5: c6bf544c354ef137546369d56239187d
+      size: 117
+    outs:
+    - path: environment-lock.yml
+      hash: md5
+      md5: 75ba930c676fe014e6ac52bee823bd63
+      size: 3990

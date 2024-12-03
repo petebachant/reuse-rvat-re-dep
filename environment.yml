@@ -1,0 +1,8 @@
+name: reuse-rvat-re-dep
+channels:
+  - conda-forge
+dependencies:
+  - matplotlib
+  - pandas
+  - jupyter
+  - jupyterlab

@@ -10,3 +10,8 @@ datasets:
       project: unh-core/rvat-re-dep
       git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
       path: Data/Processed
+environments:
+  reuse-rvat-re-dep:
+    path: environment.yml
+    kind: conda
+    stage: check-conda-env
