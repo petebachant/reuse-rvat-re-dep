@@ -49,23 +49,28 @@ figures:
     description: >
       Contours show mean streamwise velocity and vectors show mean cross-stream
       and vertical velocity.
+    stage: plot-mean-cont-quiv
   - path: figures/meancontquiv_06.pdf
     title: Mean velocity contour/quiver plot at 0.6 m/s
     description: >
       Contours show mean streamwise velocity and vectors show mean cross-stream
       and vertical velocity.
+    stage: plot-mean-cont-quiv
   - path: figures/meancontquiv_08.pdf
     title: Mean velocity contour/quiver plot at 0.8 m/s
     description: >
       Contours show mean streamwise velocity and vectors show mean cross-stream
       and vertical velocity.
+    stage: plot-mean-cont-quiv
   - path: figures/meancontquiv_10.pdf
     title: Mean velocity contour/quiver plot at 1.0 m/s
     description: >
       Contours show mean streamwise velocity and vectors show mean cross-stream
       and vertical velocity.
+    stage: plot-mean-cont-quiv
   - path: figures/meancontquiv_12.pdf
     title: Mean velocity contour/quiver plot at 1.2 m/s
     description: >
       Contours show mean streamwise velocity and vectors show mean cross-stream
       and vertical velocity.
+    stage: plot-mean-cont-quiv
