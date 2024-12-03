@@ -1,2 +1,11 @@
 questions:
   - Can we come up with a reasonable way to reuse this code and data?
+datasets:
+  - path: data/rvat-re-dep
+    title: UNH-RVAT Reynolds number dependence experimental data
+    description: >
+      Processed/reduced data from the UNH-RVAT Reynolds number dependence
+      experiment.
+    imported_from:
+      git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
+      path: Data/Processed
