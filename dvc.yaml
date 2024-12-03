@@ -14,6 +14,7 @@ stages:
       - plot.py
       - pyrvatrd/processing.py
       - pyrvatrd/plotting.py
+      - environment-lock.yml
     outs:
       - figures/meancontquiv_04.pdf
       - figures/meancontquiv_06.pdf
