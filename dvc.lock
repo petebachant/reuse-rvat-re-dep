@@ -5,10 +5,10 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: c6bf544c354ef137546369d56239187d
-      size: 117
+      md5: 77dfc57b8ab2f30730ae4aeba2c0ce38
+      size: 102
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: 75ba930c676fe014e6ac52bee823bd63
-      size: 3990
+      md5: 3e49029fe35404a15d510b477e320154
+      size: 3943
