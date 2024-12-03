@@ -30,10 +30,18 @@ class PerfCurve(object):
             "data", "rvat-re-dep", "raw", self.section
         )
         self.df = pd.read_csv(
-            os.path.join("Data", "Processed", self.section + ".csv")
+            os.path.join(
+                "data", "rvat-re-dep", "processed", self.section + ".csv"
+            )
         )
         self.testplan = pd.read_csv(
-            os.path.join("Config", "Test plan", self.section + ".csv")
+            os.path.join(
+                "data",
+                "rvat-re-dep",
+                "config",
+                "test-plan",
+                self.section + ".csv",
+            )
         )
         self.label = r"$Re_D = {:.1f} \times 10^6$".format(self.Re_D / 1e6)
 
@@ -114,7 +122,13 @@ class WakeProfile(object):
         self.z_H = z_H
         self.section = "Wake-" + str(tow_speed)
         self.testplan = pd.read_csv(
-            os.path.join("Config", "Test plan", self.section + ".csv")
+            os.path.join(
+                "data",
+                "rvat-re-dep",
+                "config",
+                "test-plan",
+                self.section + ".csv",
+            )
         )
         self.runs = self.testplan.Run[self.testplan["z/H"] == z_H]
         self.quantity = quantity
@@ -184,11 +198,12 @@ class WakeMap(object):
         self.calc_transport()
 
     def load(self):
-        self.df = pd.DataFrame()
+        dfs = []
         self.y_R = WakeProfile(self.U_infty, 0, "mean_u").y_R.values
         for z_H in self.z_H:
             wp = WakeProfile(self.U_infty, z_H, "mean_u")
-            self.df = self.df.append(wp.df, ignore_index=True)
+            dfs.append(wp.df)
+        self.df = pd.concat(dfs)
         self.mean_u = self.df.mean_u
         self.mean_v = self.df.mean_v
         self.mean_w = self.df.mean_w

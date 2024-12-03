@@ -43,8 +43,8 @@ nu = 1e-6
 chord = 0.14
 
 # Directory constants
-raw_data_dir = os.path.join("Data", "Raw")
-processed_data_dir = os.path.join("Data", "Processed")
+raw_data_dir = os.path.join("data", "rvat-re-dep", "raw")
+processed_data_dir = os.path.join("data", "rvat-re-dep", "processed")
 
 
 def calc_b_vec(vel):
