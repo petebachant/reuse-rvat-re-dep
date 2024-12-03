@@ -774,7 +774,9 @@ def plot_perf_re_dep(
             section = "Perf-" + str(speeds[n])
         else:
             section = "Wake-" + str(speeds[n])
-        df = pd.read_csv(os.path.join("Data", "Processed", section + ".csv"))
+        df = pd.read_csv(
+            os.path.join("data", "rvat-re-dep", "processed", section + ".csv")
+        )
         cp[n] = df.mean_cp.mean()
         cd[n] = df.mean_cd.mean()
         if errorbars:
@@ -799,7 +801,7 @@ def plot_perf_re_dep(
     df["Re_c_ave"] = Re_c
     df["mean_cp"] = cp
     df["mean_cd"] = cd
-    df.to_csv("Data/Processed/Perf-tsr_0.csv", index=False)
+    df.to_csv("data/rvat-re-dep/processed/Perf-tsr_0.csv", index=False)
     if ax1 is None and ax2 is None and subplots:
         fig1, (ax1, ax2) = plt.subplots(figsize=(7.5, 3.5), nrows=1, ncols=2)
     elif ax1 is None and ax2 is None and not subplots:
