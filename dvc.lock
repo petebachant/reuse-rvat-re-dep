@@ -15,6 +15,10 @@ stages:
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
     deps:
+    - path: environment-lock.yml
+      hash: md5
+      md5: 659817b3246476a727167b95b10f7d50
+      size: 4306
     - path: plot.py
       hash: md5
       md5: df486a0cbe5fb394578d8b1319047c68
@@ -30,21 +34,21 @@ stages:
     outs:
     - path: figures/meancontquiv_04.pdf
       hash: md5
-      md5: 9fd698cbafae5c7cfd54d9aae430d3af
+      md5: 80c6ba98265c63a428fc663ea6b6ef8d
       size: 44948
     - path: figures/meancontquiv_06.pdf
       hash: md5
-      md5: 92ab2d8ac3b3f9321c53903008d5c0e0
+      md5: f137fd2f73245993f8e64fa1f7d1c820
       size: 44776
     - path: figures/meancontquiv_08.pdf
       hash: md5
-      md5: 35be3213829fcac67ca860afb6c831e7
+      md5: b1d3645093812e6d0ec512adb927685e
       size: 45203
     - path: figures/meancontquiv_10.pdf
       hash: md5
-      md5: 808a619f7c0db3144c68aa506ff515f9
+      md5: 26f1945d565d2007594419955a314afe
       size: 45245
     - path: figures/meancontquiv_12.pdf
       hash: md5
-      md5: f33826a1e117b36b6fc42e865680dc6a
+      md5: 7a1fb9826d8b2a4b1c56c22b21bdc6c2
       size: 45192
