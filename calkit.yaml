@@ -36,3 +36,10 @@ software:
         git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
         path: pyrvatrd
         git_rev: 1f06663e0d3d57645f4cb9d92cad2c7536d0ac0c
+  scripts:
+    - path: scripts/plot.py
+      kind: python
+      derived_from:
+        git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
+        path: plot.py
+        git_rev: 1f06663e0d3d57645f4cb9d92cad2c7536d0ac0c
