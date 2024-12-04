@@ -27,9 +27,12 @@ and create a free account on [calkit.io](https://calkit.io).
         pandas \
         numpy \
         seaborn \
+        pip \
+        h5py \
+        scipy \
         --pip pxl==0.0.10 \
         --pip progressbar \
-        --pip calkit-python
+        --pip calkit-python \
         --stage check-conda-env
     ```
    to create a Conda environment and pipeline stage to check it's up-to-date.
