@@ -81,7 +81,7 @@ dependencies:
   - libbrotlienc=1.1.0
   - libcblas=3.9.0
   - libcurl=8.10.1
-  - libcxx=19.1.4
+  - libcxx=19.1.5
   - libdeflate=1.22
   - libedit=3.1.20191231
   - libev=4.33
@@ -91,6 +91,8 @@ dependencies:
   - libgfortran5=13.2.0
   - libjpeg-turbo=3.0.0
   - liblapack=3.9.0
+  - liblzma=5.6.3
+  - liblzma-devel=5.6.3
   - libnghttp2=1.64.0
   - libopenblas=0.3.28
   - libpng=1.6.44
@@ -192,7 +194,9 @@ dependencies:
   - widgetsnbextension=4.0.13
   - xorg-libxau=1.0.11
   - xorg-libxdmcp=1.1.5
-  - xz=5.2.6
+  - xz=5.6.3
+  - xz-gpl-tools=5.6.3
+  - xz-tools=5.6.3
   - yaml=0.2.5
   - zeromq=4.3.5
   - zipp=3.21.0
@@ -201,5 +205,6 @@ dependencies:
   - pip:
       - progressbar==2.5
       - pxl==0.0.10
+      - pyrvatrd==1.0.0
       - uncertainties==3.2.2
 name: reuse-rvat-re-dep
