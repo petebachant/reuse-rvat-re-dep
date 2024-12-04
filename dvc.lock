@@ -5,12 +5,12 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: f2aee34e6834e9e3b2b0b2e3a7251619
-      size: 233
+      md5: 5716cffb6039cb2083d2a2083689f46a
+      size: 240
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: 35a83da7179d109e209df1c07d98523f
+      md5: c6682be2e1f2d8a646ffe7728cd6bfe6
       size: 6657
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
@@ -59,7 +59,7 @@ stages:
     deps:
     - path: environment-lock.yml
       hash: md5
-      md5: 35a83da7179d109e209df1c07d98523f
+      md5: c6682be2e1f2d8a646ffe7728cd6bfe6
       size: 6657
     - path: scripts/run-sim.py
       hash: md5
@@ -71,7 +71,7 @@ stages:
       md5: b5585d0a35afc3e336c9490da99cf441
       size: 61
   plot-cp:
-    cmd: python '.calkit/notebook-stages/plot-cp/script.py'
+    cmd: calkit runenv -n reuse-rvat-re-dep -- python '.calkit/notebook-stages/plot-cp/script.py'
     deps:
     - path: .calkit/notebook-stages/plot-cp/script.py
       hash: md5
@@ -84,7 +84,7 @@ stages:
     outs:
     - path: .calkit/notebook-stages/plot-cp/outs/fig.pickle
       hash: md5
-      md5: 6035fa274a5483513635ff482c4fd7a3
+      md5: fcd5f4bfa9c58d2e633759a3e59b1902
       size: 131888
     - path: figures/cp.png
       hash: md5

@@ -14,4 +14,4 @@ dependencies:
   - pip:
       - pxl==0.0.10
       - progressbar
-      - calkit-python
+      - calkit-python==0.8.3
