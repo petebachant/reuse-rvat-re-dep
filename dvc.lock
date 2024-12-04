@@ -70,3 +70,23 @@ stages:
       hash: md5
       md5: b5585d0a35afc3e336c9490da99cf441
       size: 61
+  plot-cp:
+    cmd: python '.calkit/notebook-stages/plot-cp/script.py'
+    deps:
+    - path: .calkit/notebook-stages/plot-cp/script.py
+      hash: md5
+      md5: 0ca2bb84d4b46f492b8ecea9749682a9
+      size: 554
+    - path: results/simulation.csv
+      hash: md5
+      md5: b5585d0a35afc3e336c9490da99cf441
+      size: 61
+    outs:
+    - path: .calkit/notebook-stages/plot-cp/outs/fig.pickle
+      hash: md5
+      md5: 6035fa274a5483513635ff482c4fd7a3
+      size: 131888
+    - path: figures/cp.png
+      hash: md5
+      md5: a85cbc4a87b50fb9ae3785db57e7eea6
+      size: 29218

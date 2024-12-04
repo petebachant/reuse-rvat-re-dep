@@ -2,11 +2,11 @@ stages:
   check-conda-env:
     cmd: calkit check-conda-env -f environment.yml
     deps:
-      - environment.yml
+    - environment.yml
     outs:
-      - environment-lock.yml:
-          cache: false
-          persist: true
+    - environment-lock.yml:
+        cache: false
+        persist: true
     always_changed: true
   install-rvat-re-dep:
     cmd: calkit runenv pip install -q -e ./rvat-re-dep
@@ -14,8 +14,16 @@ stages:
   run-sim:
     cmd: calkit runenv python scripts/run-sim.py
     deps:
-      - scripts/run-sim.py
-      - environment-lock.yml
+    - scripts/run-sim.py
+    - environment-lock.yml
     outs:
-      - results/simulation.csv:
-          cache: false
+    - results/simulation.csv:
+        cache: false
+  plot-cp:
+    cmd: python '.calkit/notebook-stages/plot-cp/script.py'
+    deps:
+    - .calkit/notebook-stages/plot-cp/script.py
+    - results/simulation.csv
+    outs:
+    - .calkit/notebook-stages/plot-cp/outs/fig.pickle
+    - figures/cp.png

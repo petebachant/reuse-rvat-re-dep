@@ -6,7 +6,7 @@ dependencies:
   - pandas
   - jupyter
   - numpy
-  - python=3.12.7
+  - python
   - pip
   - seaborn
   - h5py
@@ -14,3 +14,4 @@ dependencies:
   - pip:
       - pxl==0.0.10
       - progressbar
+      - calkit-python

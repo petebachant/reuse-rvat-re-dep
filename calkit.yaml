@@ -4,8 +4,7 @@ datasets:
   - path: rvat-re-dep/Data
     title: UNH-RVAT Reynolds number dependence experimental data
     description: >
-      Processed/reduced data from the UNH-RVAT Reynolds number dependence
-      experiment.
+      Data from the UNH-RVAT Reynolds number dependence experiment.
     imported_from:
       project: unh-core/rvat-re-dep
       path: Data
@@ -19,33 +18,7 @@ environments:
     kind: conda
     stage: check-conda-env
 figures:
-  - path: figures/meancontquiv_04.pdf
-    title: Mean velocity contour/quiver plot at 0.4 m/s
-    description: >
-      Contours show mean streamwise velocity and vectors show mean cross-stream
-      and vertical velocity.
-    stage: plot-mean-cont-quiv
-  - path: figures/meancontquiv_06.pdf
-    title: Mean velocity contour/quiver plot at 0.6 m/s
-    description: >
-      Contours show mean streamwise velocity and vectors show mean cross-stream
-      and vertical velocity.
-    stage: plot-mean-cont-quiv
-  - path: figures/meancontquiv_08.pdf
-    title: Mean velocity contour/quiver plot at 0.8 m/s
-    description: >
-      Contours show mean streamwise velocity and vectors show mean cross-stream
-      and vertical velocity.
-    stage: plot-mean-cont-quiv
-  - path: figures/meancontquiv_10.pdf
-    title: Mean velocity contour/quiver plot at 1.0 m/s
-    description: >
-      Contours show mean streamwise velocity and vectors show mean cross-stream
-      and vertical velocity.
-    stage: plot-mean-cont-quiv
-  - path: figures/meancontquiv_12.pdf
-    title: Mean velocity contour/quiver plot at 1.2 m/s
-    description: >
-      Contours show mean streamwise velocity and vectors show mean cross-stream
-      and vertical velocity.
-    stage: plot-mean-cont-quiv
+  - title: Power coefficient
+    description: Power coefficient versus tip speed ratio.
+    path: figures/cp.png
+    stage: plot-cp
