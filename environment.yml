@@ -14,4 +14,3 @@ dependencies:
   - pip:
       - pxl==0.0.10
       - progressbar
-      - -e ./rvat-re-dep

@@ -5,8 +5,8 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: 0257947e127619a941b42de6f2fabb83
-      size: 243
+      md5: 978976293c957ce1ab3382dc645f51e8
+      size: 218
     outs:
     - path: environment-lock.yml
       hash: md5
@@ -52,3 +52,6 @@ stages:
       hash: md5
       md5: e1a40ec1570d5c088e707c85ff8f41be
       size: 45192
+  install-rvat-re-dep:
+    cmd: "git submodule init && git submodule update && calkit runenv pip install
+      -q -e ./rvat-re-dep\n"

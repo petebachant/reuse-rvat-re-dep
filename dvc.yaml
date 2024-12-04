@@ -8,3 +8,9 @@ stages:
           cache: false
           persist: true
     always_changed: true
+  install-rvat-re-dep:
+    cmd: >
+      git submodule init
+      && git submodule update
+      && calkit runenv pip install -q -e ./rvat-re-dep
+    always_changed: true
