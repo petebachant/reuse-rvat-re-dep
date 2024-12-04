@@ -20,7 +20,7 @@ stages:
     - results/simulation.csv:
         cache: false
   plot-cp:
-    cmd: calkit runenv -n reuse-rvat-re-dep -- python '.calkit/notebook-stages/plot-cp/script.py'
+    cmd: calkit runenv -n reuse-rvat-re-dep -- python ".calkit/notebook-stages/plot-cp/script.py"
     deps:
     - .calkit/notebook-stages/plot-cp/script.py
     - results/simulation.csv
