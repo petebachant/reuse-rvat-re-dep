@@ -212,7 +212,7 @@ dependencies:
       - asyncssh==2.18.0
       - atpublic==5.0
       - billiard==4.2.1
-      - calkit-python==0.8.3
+      - calkit-python==0.8.4
       - celery==5.4.0
       - click==8.1.7
       - click-didyoumean==0.3.1

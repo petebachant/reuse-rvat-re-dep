@@ -5,12 +5,12 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: 5716cffb6039cb2083d2a2083689f46a
+      md5: 4d0a61241738fcca65cd61a0ed3e24ad
       size: 240
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: c6682be2e1f2d8a646ffe7728cd6bfe6
+      md5: 6d5665fc1daf518d9ac9b5916454e894
       size: 6657
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
@@ -59,7 +59,7 @@ stages:
     deps:
     - path: environment-lock.yml
       hash: md5
-      md5: c6682be2e1f2d8a646ffe7728cd6bfe6
+      md5: 6d5665fc1daf518d9ac9b5916454e894
       size: 6657
     - path: scripts/run-sim.py
       hash: md5
