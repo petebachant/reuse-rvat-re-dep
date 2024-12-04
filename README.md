@@ -32,7 +32,7 @@ and create a free account on [calkit.io](https://calkit.io).
         scipy \
         --pip pxl==0.0.10 \
         --pip progressbar \
-        --pip calkit-python \
+        --pip calkit-python==0.8.3 \
         --stage check-conda-env
     ```
    to create a Conda environment and pipeline stage to check it's up-to-date.
