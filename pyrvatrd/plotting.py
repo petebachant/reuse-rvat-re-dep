@@ -1566,16 +1566,16 @@ def make_velocity_unc_table(save=False):
 
     fmt = [speed_format, unc_format, unc_format, unc_format]
     if save:
-        if not os.path.isdir("Tables"):
-            os.mkdir("Tables")
+        if not os.path.isdir("tables"):
+            os.mkdir("tables")
         df.to_latex(
-            buf="Tables/mean_vel_unc.tex",
+            buf="tables/mean_vel_unc.tex",
             index=False,
             column_format="cccc",
             escape=False,
             formatters=fmt,
         )
-        df.to_csv("Tables/mean_vel_unc.csv", index=False)
+        df.to_csv("tables/mean_vel_unc.csv", index=False)
     print("\nAverage wake velocity uncertainties (LaTeX formatted):\n")
     print(
         df.to_latex(

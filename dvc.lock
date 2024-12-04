@@ -25,7 +25,7 @@ stages:
       size: 3791
     - path: pyrvatrd/plotting.py
       hash: md5
-      md5: 875ff2d8bb841f7f2c5ade751427e416
+      md5: cc4f96514a7ef3e251b31c3d6eb3a4bb
       size: 50684
     - path: pyrvatrd/processing.py
       hash: md5
@@ -34,21 +34,21 @@ stages:
     outs:
     - path: figures/meancontquiv_04.pdf
       hash: md5
-      md5: d1066845dc1547446fb1047fd1aa6bf2
+      md5: 360e68787620964901054f7c3484f5c7
       size: 44948
     - path: figures/meancontquiv_06.pdf
       hash: md5
-      md5: 33ae59504ce134ca97c56ddc95a9ac73
+      md5: 8adb61dcc48ccf3128df72ac29683f03
       size: 44776
     - path: figures/meancontquiv_08.pdf
       hash: md5
-      md5: a8f7dfe2329c1fd128236fc1aff6b621
+      md5: 8423cae52619d69f2d1b7816e3b17cbf
       size: 45203
     - path: figures/meancontquiv_10.pdf
       hash: md5
-      md5: 047ae432a2c169c2b4c84e12f7e75581
+      md5: 322efc3022a9953dc559132fb90a2c87
       size: 45245
     - path: figures/meancontquiv_12.pdf
       hash: md5
-      md5: 066597349b11d77b42d51773da518c95
+      md5: e1a40ec1570d5c088e707c85ff8f41be
       size: 45192
