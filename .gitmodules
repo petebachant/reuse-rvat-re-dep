@@ -1,0 +1,3 @@
+[submodule "rvat-re-dep"]
+	path = rvat-re-dep
+	url = https://github.com/UNH-CORE/RVAT-Re-dep
