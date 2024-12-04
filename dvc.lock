@@ -53,5 +53,4 @@ stages:
       md5: e1a40ec1570d5c088e707c85ff8f41be
       size: 45192
   install-rvat-re-dep:
-    cmd: "git submodule init && git submodule update && calkit runenv pip install
-      -q -e ./rvat-re-dep\n"
+    cmd: calkit runenv pip install -q -e ./rvat-re-dep
