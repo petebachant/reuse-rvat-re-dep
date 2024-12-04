@@ -19,6 +19,12 @@ datasets:
       project: unh-core/rvat-re-dep
       git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
       path: Config
+  - path: data/rvat-re-dep/raw
+    title: UNH-RVAT Reynolds number dependence experiment raw data
+    description: >
+      Raw data from the Reynolds number dependence experiment.
+    imported_from:
+      project: unh-core/rvat-re-dep
 environments:
   reuse-rvat-re-dep:
     path: environment.yml
