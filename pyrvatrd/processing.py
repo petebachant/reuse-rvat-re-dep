@@ -236,14 +236,6 @@ class Run(object):
             self.vecdata = None
 
     def download_raw(self, name):
-        print(
-            "Downloading raw",
-            name,
-            "data from",
-            self.section,
-            "run",
-            self.nrun,
-        )
         download_raw(self.section, self.nrun, name)
 
     def subtract_tare_drag(self):
