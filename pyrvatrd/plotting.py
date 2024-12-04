@@ -721,7 +721,9 @@ def plot_trans_wake_profile(
     Re_D = U_infty * D / nu
     label = "{:.1f}e6".format(Re_D / 1e6)
     section = f"Wake-{U_infty:.1f}"
-    df = pd.read_csv(os.path.join("Data", "Processed", section + ".csv"))
+    df = pd.read_csv(
+        os.path.join("data", "rvat-re-dep", "processed", section + ".csv")
+    )
     df = df[df.z_H == z_H]
     q = df[quantity]
     y_R = df.y_R
@@ -950,9 +952,9 @@ def plot_tare_drag():
 
 def plot_settling(tow_speed):
     """Plot data from the settling experiments."""
-    testplan = pd.read_csv("Config/Test plan/Settling.csv")
+    testplan = pd.read_csv("data/rvat-re-dep/config/test-plan/Settling.csv")
     nrun = testplan["Run"][testplan["U"] == tow_speed].iloc[0]
-    fpath = "Data/Raw/Settling/{}/vecdata.dat".format(nrun)
+    fpath = "data/rvat-re-dep/raw/Settling/{}/vecdata.dat".format(nrun)
     data = np.loadtxt(fpath, unpack=True)
     u = data[2]  # 2 for x velocity
     t = data[0] * 0.005
@@ -1392,7 +1394,7 @@ def plot_vel_spec(
         plot_vertical_lines([1, 3, 6, 9], color="lightgray")
     if plot_conf_int:
         dof = n_band_ave * 2
-        chi2 = scipy.stats.chi2.interval(alpha=0.95, df=dof)
+        chi2 = scipy.stats.chi2.interval(0.95, df=dof)
         y1 = dof * spec / chi2[1]
         y2 = dof * spec / chi2[0]
         plt.fill_between(f / f_turbine, y1, y2, facecolor=color, alpha=0.3)

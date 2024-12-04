@@ -1,21 +1,24 @@
 """This module contains classes and functions for processing data."""
 
 from __future__ import division, print_function
-import numpy as np
-from pxl import timeseries as ts
-from pxl.timeseries import calc_uncertainty, calc_exp_uncertainty
-import matplotlib.pyplot as plt
-from scipy.io import loadmat
-import multiprocessing as mp
-import scipy.stats
-from numpy import nanmean, nanstd
-from scipy.signal import decimate
-from pxl import fdiff
-import progressbar
+
 import json
+import multiprocessing as mp
 import os
 import sys
+import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+import progressbar
+import scipy.stats
+from numpy import nanmean, nanstd
+from pxl import fdiff
+from pxl import timeseries as ts
+from pxl.timeseries import calc_exp_uncertainty, calc_uncertainty
+from scipy.io import loadmat
+from scipy.signal import decimate
 
 if sys.version_info[0] == 3:
     from urllib.request import urlretrieve
@@ -80,7 +83,7 @@ class Run(object):
     def __init__(self, section, nrun):
         self.section = section
         nrun = int(nrun)
-        section_raw_dir = os.path.join("Data", "Raw", section)
+        section_raw_dir = os.path.join("data", "rvat-re-dep", "raw", section)
         if nrun < 0:
             runs = []
             for f in os.listdir(section_raw_dir):
@@ -118,9 +121,10 @@ class Run(object):
         """Loads the data from the run into memory."""
         self.loaded = True
         try:
-            with open("Config/raw_data_urls.json") as f:
+            with open("data/rvat-re-dep/config/raw_data_urls.json") as f:
                 raw_data_urls = json.load(f)
         except IOError:
+            warnings.warn("Cannot load raw data URLs")
             raw_data_urls = {}
         # Load metadata if it exists
         fpath_metadata = os.path.join(self.raw_dir, "metadata.json")
@@ -192,7 +196,7 @@ class Run(object):
         self.drag = nidata["drag_left"] + nidata["drag_right"]
         # Remove offsets from drag, not torque
         t0 = 2
-        self.drag = self.drag - np.mean(self.drag[0 : self.sr_ni * t0])
+        self.drag = self.drag - np.mean(self.drag[0 : int(self.sr_ni * t0)])
         # Compute RPM and omega
         self.angle = nidata["turbine_angle"]
         self.rpm_ni = fdiff.second_order_diff(self.angle, self.time_ni) / 6.0
@@ -232,10 +236,20 @@ class Run(object):
             self.vecdata = None
 
     def download_raw(self, name):
+        print(
+            "Downloading raw",
+            name,
+            "data from",
+            self.section,
+            "run",
+            self.nrun,
+        )
         download_raw(self.section, self.nrun, name)
 
     def subtract_tare_drag(self):
-        df = pd.read_csv(os.path.join("Data", "Processed", "Tare drag.csv"))
+        df = pd.read_csv(
+            os.path.join("data", "rvat-re-dep", "processed", "Tare drag.csv")
+        )
         self.tare_drag = df.tare_drag[
             df.tow_speed == self.tow_speed_nom
         ].values[0]
@@ -288,62 +302,78 @@ class Run(object):
         self.time_ni_all = self.time_ni
         self.time_perf_all = self.time_ni
         self.time_ni = self.time_ni_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.time_perf = self.time_ni
         self.angle_all = self.angle
         self.angle = self.angle_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.torque_all = self.torque
         self.torque = self.torque_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.torque_arm_all = self.torque_arm
         self.torque_arm = self.torque_arm_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.omega_all = self.omega
         self.omega = self.omega_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.tow_speed_all = self.tow_speed
         if self.lin_enc:
             self.tow_speed = self.tow_speed_all[
-                self.t1 * self.sr_ni : self.t2 * self.sr_ni
+                int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
             ]
         self.tsr_all = self.tsr
-        self.tsr = self.tsr_all[self.t1 * self.sr_ni : self.t2 * self.sr_ni]
+        self.tsr = self.tsr_all[
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
+        ]
         self.cp_all = self.cp
-        self.cp = self.cp_all[self.t1 * self.sr_ni : self.t2 * self.sr_ni]
+        self.cp = self.cp_all[
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
+        ]
         self.ct_all = self.ct
-        self.ct = self.ct_all[self.t1 * self.sr_ni : self.t2 * self.sr_ni]
+        self.ct = self.ct_all[
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
+        ]
         self.cd_all = self.cd
-        self.cd = self.cd_all[self.t1 * self.sr_ni : self.t2 * self.sr_ni]
+        self.cd = self.cd_all[
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
+        ]
         self.rpm_ni_all = self.rpm_ni
         self.rpm_ni = self.rpm_ni_all[
-            self.t1 * self.sr_ni : self.t2 * self.sr_ni
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
         ]
         self.rpm = self.rpm_ni
         self.rpm_all = self.rpm_ni_all
         self.drag_all = self.drag
-        self.drag = self.drag_all[self.t1 * self.sr_ni : self.t2 * self.sr_ni]
+        self.drag = self.drag_all[
+            int(self.t1 * self.sr_ni) : int(self.t2 * self.sr_ni)
+        ]
         # Trim wake quantities
         self.time_vec_all = self.time_vec
         self.time_vec = self.time_vec_all[
-            self.t1 * self.sr_vec : self.t2 * self.sr_vec
+            int(self.t1 * self.sr_vec) : int(self.t2 * self.sr_vec)
         ]
         self.u_all = self.u
-        self.u = self.u_all[self.t1 * self.sr_vec : self.t2 * self.sr_vec]
+        self.u = self.u_all[
+            int(self.t1 * self.sr_vec) : int(self.t2 * self.sr_vec)
+        ]
         self.v_all = self.v
-        self.v = self.v_all[self.t1 * self.sr_vec : self.t2 * self.sr_vec]
+        self.v = self.v_all[
+            int(self.t1 * self.sr_vec) : int(self.t2 * self.sr_vec)
+        ]
         self.w_all = self.w
-        self.w = self.w_all[self.t1 * self.sr_vec : self.t2 * self.sr_vec]
+        self.w = self.w_all[
+            int(self.t1 * self.sr_vec) : int(self.t2 * self.sr_vec)
+        ]
 
     def find_t2(self):
         sr = self.sr_ni
-        angle1 = self.angle[sr * self.t1]
-        angle2 = self.angle[sr * self.t2]
+        angle1 = self.angle[int(sr * self.t1)]
+        angle2 = self.angle[int(sr * self.t2)]
         n3rdrevs = np.floor((angle2 - angle1) / 120.0)
         self.n_revs = int(np.floor((angle2 - angle1) / 360.0))
         self.n_blade_pass = int(n3rdrevs)
@@ -763,7 +793,7 @@ class Section(object):
         self.name = name
         self.processed_path = os.path.join(processed_data_dir, name + ".csv")
         self.test_plan_path = os.path.join(
-            "Config", "Test plan", name + ".csv"
+            "data", "rvat-re-dep", "config", "test-plan", name + ".csv"
         )
         self.load()
 
@@ -834,7 +864,11 @@ def process_latest_run(section):
 
 
 def load_test_plan_section(section):
-    df = pd.read_csv(os.path.join("Config", "Test plan", section + ".csv"))
+    df = pd.read_csv(
+        os.path.join(
+            "data", "rvat-re-dep", "config", "test-plan", section + ".csv"
+        )
+    )
     df = df.dropna(how="all", axis=1).dropna(how="all", axis=0)
     if "Run" in df:
         df["Run"] = df["Run"].astype(int)
@@ -986,7 +1020,10 @@ def batch_process_tare_torque(plot=False):
 
 
 def make_remote_name(local_path):
-    return "_".join(local_path.split("\\")[-3:])
+    path = os.path.normpath(local_path)
+    split_path = path.split(os.sep)
+    remote_name = "_".join(split_path[-3:])
+    return remote_name
 
 
 def download_raw(section, nrun, name):
@@ -1005,12 +1042,12 @@ def download_raw(section, nrun, name):
     else:
         filename = name
     print("Downloading", filename, "from", section, "run", nrun)
-    local_dir = os.path.join("Data", "Raw", section, str(nrun))
+    local_dir = os.path.join("data", "rvat-re-dep", "raw", section, str(nrun))
     if not os.path.isdir(local_dir):
         os.makedirs(local_dir)
     local_path = os.path.join(local_dir, filename)
     remote_name = make_remote_name(local_path)
-    with open("Config/raw_data_urls.json") as f:
+    with open("data/rvat-re-dep/config/raw_data_urls.json") as f:
         urls = json.load(f)
     url = urls[remote_name]
     pbar = progressbar.ProgressBar()

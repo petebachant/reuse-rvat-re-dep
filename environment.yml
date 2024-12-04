@@ -10,6 +10,7 @@ dependencies:
   - pip
   - seaborn
   - h5py
+  - scipy
   - pip:
-      - pxl
+      - pxl==0.0.10
       - progressbar
