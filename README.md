@@ -8,7 +8,7 @@ The goal here is to explore ideas to make reuse easier.
 
 ## How this was setup
 
-Before being able to run these steps,
+To be able to run these steps,
 you'll need to
 [install Calkit](https://github.com/calkit/calkit?tab=readme-ov-file#installation),
 [create a token for your local machine](https://github.com/calkit/calkit?tab=readme-ov-file#cloud-integration),
