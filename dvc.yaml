@@ -11,3 +11,11 @@ stages:
   install-rvat-re-dep:
     cmd: calkit runenv pip install -q -e ./rvat-re-dep
     always_changed: true
+  run-sim:
+    cmd: calkit runenv python scripts/run-sim.py
+    deps:
+      - scripts/run-sim.py
+      - environment-lock.yml
+    outs:
+      - results/simulation.csv:
+          cache: false

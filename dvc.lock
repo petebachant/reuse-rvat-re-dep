@@ -5,13 +5,13 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: 978976293c957ce1ab3382dc645f51e8
-      size: 218
+      md5: f2aee34e6834e9e3b2b0b2e3a7251619
+      size: 233
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: d5ab6b02582a64cca962b6d0b3d894ed
-      size: 4444
+      md5: 35a83da7179d109e209df1c07d98523f
+      size: 6657
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
     deps:
@@ -54,3 +54,19 @@ stages:
       size: 45192
   install-rvat-re-dep:
     cmd: calkit runenv pip install -q -e ./rvat-re-dep
+  run-sim:
+    cmd: calkit runenv python scripts/run-sim.py
+    deps:
+    - path: environment-lock.yml
+      hash: md5
+      md5: 35a83da7179d109e209df1c07d98523f
+      size: 6657
+    - path: scripts/run-sim.py
+      hash: md5
+      md5: c6399689ffd809b3e0a72bd5372ace5f
+      size: 290
+    outs:
+    - path: results/simulation.csv
+      hash: md5
+      md5: b5585d0a35afc3e336c9490da99cf441
+      size: 61

@@ -1,54 +1,23 @@
 questions:
   - Can we come up with a reasonable way to reuse this code and data?
 datasets:
-  - path: data/rvat-re-dep/processed
+  - path: rvat-re-dep/Data
     title: UNH-RVAT Reynolds number dependence experimental data
     description: >
       Processed/reduced data from the UNH-RVAT Reynolds number dependence
       experiment.
     imported_from:
       project: unh-core/rvat-re-dep
-      git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
-      path: Data/Processed
-  - path: data/rvat-re-dep/config
-    title: UNH-RVAT Reynolds number dependence experimental config
-    description: >
-      Config and test plan from the UNH-RVAT Reynolds number dependence
-      experiment.
-    imported_from:
-      project: unh-core/rvat-re-dep
-      git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
-      path: Config
-  - path: data/rvat-re-dep/raw
-    title: UNH-RVAT Reynolds number dependence experiment raw data
-    description: >
-      Raw data from the Reynolds number dependence experiment.
-    imported_from:
-      project: unh-core/rvat-re-dep
+      path: Data
+  - title: Simulated
+    description: Simulated power coefficient.
+    path: results/simulation.csv
+    stage: run-sim
 environments:
   reuse-rvat-re-dep:
     path: environment.yml
     kind: conda
     stage: check-conda-env
-software:
-  packages:
-    - path: pyrvatrd
-      kind: python
-      title: UNH-RVAT Re dep experiment
-      description: >
-        A Python package for working with the UNH-RVAT Reynolds number
-        dependence data
-      derived_from:
-        git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
-        path: pyrvatrd
-        git_rev: 1f06663e0d3d57645f4cb9d92cad2c7536d0ac0c
-  scripts:
-    - path: plot.py
-      kind: python
-      derived_from:
-        git_repo_url: https://github.com/UNH-CORE/RVAT-Re-dep
-        path: plot.py
-        git_rev: 1f06663e0d3d57645f4cb9d92cad2c7536d0ac0c
 figures:
   - path: figures/meancontquiv_04.pdf
     title: Mean velocity contour/quiver plot at 0.4 m/s
