@@ -1,17 +1,17 @@
 schema: '2.0'
 stages:
   check-conda-env:
-    cmd: calkit check-conda-env -f environment.yml
+    cmd: calkit check-conda-env --relaxed -f environment.yml
     deps:
     - path: environment.yml
       hash: md5
-      md5: 4d0a61241738fcca65cd61a0ed3e24ad
+      md5: e225c7be7a549290c6f0af1598491ca5
       size: 240
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: 6d5665fc1daf518d9ac9b5916454e894
-      size: 6657
+      md5: 2d7ea69abd9582e93ecfe5af64d225a0
+      size: 6658
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
     deps:
@@ -59,8 +59,8 @@ stages:
     deps:
     - path: environment-lock.yml
       hash: md5
-      md5: 6d5665fc1daf518d9ac9b5916454e894
-      size: 6657
+      md5: 2d7ea69abd9582e93ecfe5af64d225a0
+      size: 6658
     - path: scripts/run-sim.py
       hash: md5
       md5: c6399689ffd809b3e0a72bd5372ace5f
