@@ -5,13 +5,13 @@ stages:
     deps:
     - path: environment.yml
       hash: md5
-      md5: e225c7be7a549290c6f0af1598491ca5
-      size: 240
+      md5: d0d633ca497c426963ca2a311f311e32
+      size: 257
     outs:
     - path: environment-lock.yml
       hash: md5
-      md5: 2d7ea69abd9582e93ecfe5af64d225a0
-      size: 6658
+      md5: 48f3ca6a2284640e6d7258fc22b95dad
+      size: 6955
   plot-mean-cont-quiv:
     cmd: calkit runenv python plot.py all_meancontquiv --save --no-show
     deps:
@@ -53,40 +53,41 @@ stages:
       md5: e1a40ec1570d5c088e707c85ff8f41be
       size: 45192
   install-rvat-re-dep:
-    cmd: calkit runenv pip install -q -e ./rvat-re-dep
+    cmd: calkit runenv --relaxed pip install -q -e ./rvat-re-dep
   run-sim:
-    cmd: calkit runenv python scripts/run-sim.py
+    cmd: calkit runenv --relaxed python scripts/run-sim.py
     deps:
-    - path: environment-lock.yml
+    - path: environment.yml
       hash: md5
-      md5: 2d7ea69abd9582e93ecfe5af64d225a0
-      size: 6658
+      md5: d0d633ca497c426963ca2a311f311e32
+      size: 257
     - path: scripts/run-sim.py
       hash: md5
-      md5: c6399689ffd809b3e0a72bd5372ace5f
-      size: 290
+      md5: 706af4001b101d5dbbcf288694646b79
+      size: 305
     outs:
     - path: results/simulation.csv
       hash: md5
-      md5: b5585d0a35afc3e336c9490da99cf441
-      size: 61
+      md5: 9dde57a56c70ff16cfa00136ad71e6aa
+      size: 68
   plot-cp:
-    cmd: calkit runenv -n reuse-rvat-re-dep -- python ".calkit/notebook-stages/plot-cp/script.py"
+    cmd: "calkit runenv -n reuse-rvat-re-dep --relaxed -- python \".calkit/notebook-stages/plot-cp/script.py\"\
+      \n"
     deps:
     - path: .calkit/notebook-stages/plot-cp/script.py
       hash: md5
-      md5: 0ca2bb84d4b46f492b8ecea9749682a9
-      size: 554
+      md5: 7f054682e4664b9d9e4f79e6353e4903
+      size: 575
     - path: results/simulation.csv
       hash: md5
-      md5: b5585d0a35afc3e336c9490da99cf441
-      size: 61
+      md5: 9dde57a56c70ff16cfa00136ad71e6aa
+      size: 68
     outs:
     - path: .calkit/notebook-stages/plot-cp/outs/fig.pickle
       hash: md5
-      md5: 5046b47eeb98d245cf1a2168ba077d2b
-      size: 131888
+      md5: 99524ee9cd515f2e03363d736c68635b
+      size: 128875
     - path: figures/cp.png
       hash: md5
-      md5: a85cbc4a87b50fb9ae3785db57e7eea6
-      size: 29218
+      md5: 5efc908948fbc9f49ef56aa3d1d2caef
+      size: 29219

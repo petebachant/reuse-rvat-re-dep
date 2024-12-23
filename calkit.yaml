@@ -22,3 +22,6 @@ figures:
     description: Power coefficient versus tip speed ratio.
     path: figures/cp.png
     stage: plot-cp
+dependencies:
+  - calkit>=0.11.1
+  - conda

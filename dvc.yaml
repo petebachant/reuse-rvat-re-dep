@@ -1,26 +1,19 @@
 stages:
-  check-conda-env:
-    cmd: calkit check-conda-env --relaxed -f environment.yml
-    deps:
-      - environment.yml
-    outs:
-      - environment-lock.yml:
-          cache: false
-          persist: true
-    always_changed: true
   install-rvat-re-dep:
-    cmd: calkit runenv pip install -q -e ./rvat-re-dep
+    cmd: calkit runenv --relaxed pip install -q -e ./rvat-re-dep
     always_changed: true
   run-sim:
-    cmd: calkit runenv python scripts/run-sim.py
+    cmd: calkit runenv --relaxed python scripts/run-sim.py
     deps:
       - scripts/run-sim.py
-      - environment-lock.yml
+      - environment.yml
     outs:
       - results/simulation.csv:
           cache: false
   plot-cp:
-    cmd: calkit runenv -n reuse-rvat-re-dep -- python ".calkit/notebook-stages/plot-cp/script.py"
+    cmd: >
+      calkit runenv -n reuse-rvat-re-dep --relaxed --
+      python ".calkit/notebook-stages/plot-cp/script.py"
     deps:
       - .calkit/notebook-stages/plot-cp/script.py
       - results/simulation.csv
